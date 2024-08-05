@@ -2,10 +2,11 @@ call plug#begin()
   
   Plug 'sheerun/vim-polyglot'
   Plug 'preservim/nerdtree'
-  Plug 'frazrepo/vim-rainbow'
   Plug 'windwp/nvim-autopairs'
   Plug 'itchyny/lightline.vim'
   Plug 'EdenEast/nightfox.nvim'
+  Plug 'nvim-treesitter/completion-treesitter' 
+  Plug 'reedes/vim-pencil'
 
 call plug#end()
 
@@ -13,17 +14,29 @@ colorscheme nightfox
 
 set number
 set nocompatible
+set nobackup
+set noswapfile
+set autoread
 
 "-- my keymap --"
+nnoremap <C-o> :SoftPencil<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-c> :q<CR>
 nnoremap <C-s> :w<CR>
 nnoremap <C-i> :PlugInstall<CR>
+nnoremap <C-C> :q!<CR>
 nnoremap <C-p> :CocCommand prettier.forceFormatDocument<CR>
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
-" --- waring --- "
-" install coc.nvim with gitclone direcly "
+" --- waring --- 
+" install coc.nvim with gitclone direcly 
+"
+" mkdir -p ~/.local/share/nvim/site/pack/coc/start
+" cd ~/.local/share/nvim/site/pack/coc/start
+" git clone --branch release https://github.com/neoclide/coc.nvim.git --depth=1
+"
+" or see https://github.com/neoclide/coc.nvim/wiki/Install-coc.nvi
+" -- end waring ---
 
 
 " https://raw.githubusercontent.com/neoclide/coc.nvim/master/doc/coc-example-config.vim
