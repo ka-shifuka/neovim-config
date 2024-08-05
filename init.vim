@@ -4,16 +4,21 @@ call plug#begin()
   Plug 'preservim/nerdtree'
   Plug 'windwp/nvim-autopairs'
   Plug 'itchyny/lightline.vim'
-  Plug 'EdenEast/nightfox.nvim'
   Plug 'nvim-treesitter/completion-treesitter' 
   Plug 'reedes/vim-pencil'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'  
   Plug 'tpope/tpope-vim-abolish'
- 
+  Plug 'ghifarit53/tokyonight-vim'
+
 call plug#end()
 
-colorscheme nightfox
+set termguicolors
+
+let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_enable_italic = 0
+
+colorscheme tokyonight
 
 set number
 set nocompatible
@@ -24,7 +29,8 @@ set autoread
 "-- My keymap --"
 nnoremap <C-r> :Subvert/
 nnoremap <C-o> :SoftPencil<CR>
-nnoremap <C-t> :Telescope find_files<CR>
+nnoremap <S-f> :Telescope find_files<CR>
+nnoremap <C-t> :tabnew 
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-c> :q<CR>
 nnoremap <C-s> :w<CR>
@@ -34,10 +40,9 @@ nnoremap <C-p> :CocCommand prettier.forceFormatDocument<CR>
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
 
-augroup pencil
-  autocmd!
-  autocmd FileType * call pencil#init()
-augroup END
+nnoremap <S-p> :tabNext<CR>
+
+" augroup pencil autocmd! autocmd FileType * call pencil#init() augroup END
 
 " --- waring --- 
 " install coc.nvim with gitclone direcly 
