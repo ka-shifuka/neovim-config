@@ -15,12 +15,13 @@ my coc plugin list
 - coc-go 1.3.33
 
 
+install vim-plug
+
 ```bash
-mkdir .local/share/nvim/site/autoload/ 
+mkdir .local/share/nvim/site/autoload/
 
 cd .local/share/nvim/site/autoload
 
 curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim">plug.vim
 ```
-
 

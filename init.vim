@@ -1,15 +1,16 @@
 call plug#begin()
-  
+
   Plug 'sheerun/vim-polyglot'
   Plug 'preservim/nerdtree'
   Plug 'windwp/nvim-autopairs'
-  Plug 'itchyny/lightline.vim'
   Plug 'nvim-treesitter/completion-treesitter' 
   Plug 'reedes/vim-pencil'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'  
   Plug 'tpope/tpope-vim-abolish'
   Plug 'ghifarit53/tokyonight-vim'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'liuchengxu/eleline.vim'
 
 call plug#end()
 
@@ -17,6 +18,7 @@ set termguicolors
 
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 0
+let g:eleline_slim = 1
 
 colorscheme tokyonight
 
@@ -25,6 +27,7 @@ set nocompatible
 set nobackup
 set noswapfile
 set autoread
+set laststatus=2
 
 "-- My keymap --"
 nnoremap <C-r> :Subvert/
@@ -36,6 +39,7 @@ nnoremap <C-c> :q<CR>
 nnoremap <C-s> :w<CR>
 nnoremap <C-i> :PlugInstall<CR>
 nnoremap <C-x> :q!<CR>
+nnoremap <ESC> :wq<CR>
 nnoremap <C-p> :CocCommand prettier.forceFormatDocument<CR>
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
