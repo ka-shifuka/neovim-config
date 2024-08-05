@@ -7,7 +7,10 @@ call plug#begin()
   Plug 'EdenEast/nightfox.nvim'
   Plug 'nvim-treesitter/completion-treesitter' 
   Plug 'reedes/vim-pencil'
-
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'  
+  Plug 'tpope/tpope-vim-abolish'
+ 
 call plug#end()
 
 colorscheme nightfox
@@ -18,15 +21,23 @@ set nobackup
 set noswapfile
 set autoread
 
-"-- my keymap --"
+"-- My keymap --"
+nnoremap <C-r> :Subvert/
 nnoremap <C-o> :SoftPencil<CR>
+nnoremap <C-t> :Telescope find_files<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-c> :q<CR>
 nnoremap <C-s> :w<CR>
 nnoremap <C-i> :PlugInstall<CR>
-nnoremap <C-C> :q!<CR>
+nnoremap <C-x> :q!<CR>
 nnoremap <C-p> :CocCommand prettier.forceFormatDocument<CR>
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+
+
+augroup pencil
+  autocmd!
+  autocmd FileType * call pencil#init()
+augroup END
 
 " --- waring --- 
 " install coc.nvim with gitclone direcly 
