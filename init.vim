@@ -1,7 +1,6 @@
 call plug#begin()
 
   Plug 'sheerun/vim-polyglot'
-  Plug 'preservim/nerdtree'
   Plug 'windwp/nvim-autopairs'
   Plug 'nvim-treesitter/completion-treesitter' 
   Plug 'reedes/vim-pencil'
@@ -11,6 +10,8 @@ call plug#begin()
   Plug 'ghifarit53/tokyonight-vim'
   Plug 'ryanoasis/vim-devicons'
   Plug 'liuchengxu/eleline.vim'
+  Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+  Plug 'scrooloose/nerdtree'
 
 call plug#end()
 
@@ -19,6 +20,8 @@ set termguicolors
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 0
 let g:eleline_slim = 1
+
+let NERDTreeShowHidden=1
 
 colorscheme tokyonight
 
@@ -29,22 +32,31 @@ set noswapfile
 set autoread
 set laststatus=2
 
+function! SaveAndQuit()
+  if &modified
+    write
+    quit
+  else
+    quit
+  endif
+endfunction
+
 "-- My keymap --"
 nnoremap <C-r> :Subvert/
-nnoremap <C-o> :SoftPencil<CR>
+nnoremap <S-o> :SoftPencil<CR>
 nnoremap <S-f> :Telescope find_files<CR>
-nnoremap <C-t> :tabnew 
-nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-t> :tabnew<CR> 
+nnoremap <S-n> :tabNext<CR>
+nnoremap <C-o> :NERDTreeToggle<CR>
 nnoremap <C-c> :q<CR>
 nnoremap <C-s> :w<CR>
 nnoremap <C-i> :PlugInstall<CR>
 nnoremap <C-x> :q!<CR>
-nnoremap <ESC> :wq<CR>
+nnoremap <ESC> :call SaveAndQuit()<CR>
 nnoremap <C-p> :CocCommand prettier.forceFormatDocument<CR>
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
-
-nnoremap <S-p> :tabNext<CR>
+autocmd VimEnter * NERDTree | wincmd p | quit
 
 " augroup pencil autocmd! autocmd FileType * call pencil#init() augroup END
 
