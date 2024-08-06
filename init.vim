@@ -46,7 +46,8 @@ nnoremap <C-r> :Subvert/
 nnoremap <S-o> :SoftPencil<CR>
 nnoremap <S-f> :Telescope find_files<CR>
 nnoremap <C-t> :tabnew<CR> 
-nnoremap <S-n> :tabNext<CR>
+nnoremap <S-m> :tabnext<CR>
+nnoremap <S-n> :tabprevious<CR>
 nnoremap <C-o> :NERDTreeToggle<CR>
 nnoremap <C-c> :q<CR>
 nnoremap <C-s> :w<CR>
