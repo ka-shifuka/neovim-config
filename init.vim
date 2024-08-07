@@ -52,10 +52,10 @@ nnoremap <S-l> :CocList extensions<CR>
 nnoremap <C-t> :FloatermToggle<CR>
 nnoremap <S-p> :CocRestart<CR><CR>
 nnoremap <S-o> :PencilToggle<CR>:echo ""<CR>
+nnoremap <silent> n :NERDTreeToggle<CR>
 nnoremap <silent> f :Telescope find_files<CR>:echo ""<CR>
 nnoremap <silent> m :tabnext<CR>:echo ""<CR>
 nnoremap <silent> b :tabprevious<CR>:echo ""<CR>
-nnoremap <silent> n :NERDTreeToggle<CR>:echo ""<CR>
 nnoremap <C-c> :q<CR>:echo ""<CR>
 nnoremap <C-s> :w<CR>:CocCommand prettier.forceFormatDocument<CR>:echo ""<CR>
 nnoremap <C-i> :PlugInstall<CR>:echo ""<CR>
@@ -94,6 +94,7 @@ let g:NERDTreeMapJumpParent = 't'
 " augroup END
 
 " augroup pencil autocmd! autocmd FileType * call pencil#init() augroup END
+"
 
 " --- waring --- 
 " install coc.nvim with gitclone direcly 
