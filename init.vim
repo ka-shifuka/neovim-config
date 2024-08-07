@@ -7,32 +7,36 @@ call plug#begin()
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'  
   Plug 'tpope/tpope-vim-abolish'
-  Plug 'ghifarit53/tokyonight-vim'
   Plug 'ryanoasis/vim-devicons'
-  Plug 'liuchengxu/eleline.vim'
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'scrooloose/nerdtree'
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  Plug 'voldikss/vim-floaterm'
+  Plug 'itchyny/lightline.vim'
+  Plug 'Mofiqul/dracula.nvim'
+  " theme "
+  Plug 'sickill/vim-monokai'
+  Plug 'morhetz/gruvbox'
+  Plug 'matze/vim-move'
 
 call plug#end()
 
 set termguicolors
 
-let g:tokyonight_style = 'night' " available: night, storm
-let g:tokyonight_enable_italic = 0
-let g:eleline_slim = 1
+let g:gruvbox_italic = 0
+let g:gruvbox_contrast_dark = 'soft'
+let g:gruvbox_transparent_bg = 1
 
-let NERDTreeShowHidden=1
-
-colorscheme tokyonight
+colorscheme gruvbox
 
 set number
 set nocompatible
 set nobackup
 set noswapfile
 set autoread
-set laststatus=2
+set laststatus=3
 
-function! SaveAndQuit()
+function! SaveOrQuit()
   if &modified
     write
     quit
@@ -43,21 +47,51 @@ endfunction
 
 "-- My keymap --"
 nnoremap <C-r> :Subvert/
-nnoremap <S-o> :SoftPencil<CR>
-nnoremap <S-f> :Telescope find_files<CR>
-nnoremap <C-t> :tabnew<CR> 
-nnoremap <S-m> :tabnext<CR>
-nnoremap <S-n> :tabprevious<CR>
-nnoremap <C-o> :NERDTreeToggle<CR>
-nnoremap <C-c> :q<CR>
-nnoremap <C-s> :w<CR>
-nnoremap <C-i> :PlugInstall<CR>
-nnoremap <C-x> :q!<CR>
-nnoremap <ESC> :call SaveAndQuit()<CR>
-nnoremap <C-p> :CocCommand prettier.forceFormatDocument<CR>
+nnoremap <S-C> :CocCommand
+nnoremap <S-l> :CocList extensions<CR> 
+nnoremap <C-t> :FloatermToggle<CR>
+nnoremap <S-p> :CocRestart<CR><CR>
+nnoremap <S-o> :PencilToggle<CR>:echo ""<CR>
+nnoremap <silent> f :Telescope find_files<CR>:echo ""<CR>
+nnoremap <silent> m :tabnext<CR>:echo ""<CR>
+nnoremap <silent> b :tabprevious<CR>:echo ""<CR>
+nnoremap <silent> n :NERDTreeToggle<CR>:echo ""<CR>
+nnoremap <C-c> :q<CR>:echo ""<CR>
+nnoremap <C-s> :w<CR>:CocCommand prettier.forceFormatDocument<CR>:echo ""<CR>
+nnoremap <C-i> :PlugInstall<CR>:echo ""<CR>
+nnoremap <C-x> :q!<CR>:echo ""
+nnoremap <ESC> :call SaveOrQuit()<CR>:echo ""<CR>
+nnoremap <C-p> :CocCommand prettier.forceFormatDocument<CR>:echo ""<CR>
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
+nnoremap j k
+nnoremap k j
+
+" NERDTree
+let NERDTreeShowHidden=1
 autocmd VimEnter * NERDTree | wincmd p | quit
+
+" autocmd BufWinEnter * if &buftype != 'quickfix' && getcmdwintype() == '' | silent NERDTreeMirror | endif
+
+filetype plugin on
+
+" floaterm
+let g:floaterm_width = &columns
+let g:floaterm_height =  25 
+let g:floaterm_position = 'bottom'
+let g:move_key_modifier = 'C'
+let g:move_key_modifier_visualmode = 'C'
+
+let g:NERDTreeDirArrowExpandable = '→'
+let g:NERDTreeDirArrowCollapsible = '↓'
+let g:NERDTreeMapActivateNode = 'o'
+let g:NERDTreeMapMenu = 'a'
+let g:NERDTreeMapOpenInTab = 'p'
+let g:NERDTreeMapJumpParent = 't'
+" augroup pencil
+"   autocmd!
+"   autocmd FileType * call pencil#init({'wrap': 'soft', 'autoformat': 1})
+" augroup END
 
 " augroup pencil autocmd! autocmd FileType * call pencil#init() augroup END
 
