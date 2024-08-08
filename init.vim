@@ -1,3 +1,5 @@
+let g:polyglot_disabled = ['vue']
+
 call plug#begin()
 
   Plug 'sheerun/vim-polyglot'
@@ -7,13 +9,13 @@ call plug#begin()
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'  
   Plug 'tpope/tpope-vim-abolish'
-  Plug 'ryanoasis/vim-devicons'
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'scrooloose/nerdtree'
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   Plug 'voldikss/vim-floaterm'
   Plug 'itchyny/lightline.vim'
-  Plug 'Mofiqul/dracula.nvim'
+  Plug 'ryanoasis/vim-devicons'
+  " Plug 'kyazdani42/nvim-web-devicons'
   " theme "
   Plug 'sickill/vim-monokai'
   Plug 'morhetz/gruvbox'
@@ -26,6 +28,7 @@ set termguicolors
 let g:gruvbox_italic = 0
 let g:gruvbox_contrast_dark = 'soft'
 let g:gruvbox_transparent_bg = 1
+
 
 colorscheme gruvbox
 
@@ -57,15 +60,25 @@ nnoremap <silent> f :Telescope find_files<CR>:echo ""<CR>
 nnoremap <silent> m :tabnext<CR>:echo ""<CR>
 nnoremap <silent> b :tabprevious<CR>:echo ""<CR>
 nnoremap <C-c> :q<CR>:echo ""<CR>
-nnoremap <C-s> :w<CR>:CocCommand prettier.forceFormatDocument<CR>:echo ""<CR>
+nnoremap <silent> s :w<CR>:CocCommand prettier.forceFormatDocument<CR>:echo ""<CR>
 nnoremap <C-i> :PlugInstall<CR>:echo ""<CR>
 nnoremap <C-x> :q!<CR>:echo ""
 nnoremap <ESC> :call SaveOrQuit()<CR>:echo ""<CR>
 nnoremap <C-p> :CocCommand prettier.forceFormatDocument<CR>:echo ""<CR>
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
-nnoremap j k
-nnoremap k j
+nnoremap h k
+nnoremap j j
+nnoremap l $
+nnoremap k 0
+nnoremap <S-h> 10k
+nnoremap <S-j> 10j
+
+let g:coc_max_preload = 50
+let g:coc_preload_item_limit = 10
+let g:coc_diagnostic_update_in_insert = 0
+let g:coc_diagnostic_scan_delay = 1000
+let g:coc_max_valid_range = 100
 
 " NERDTree
 let NERDTreeShowHidden=1
@@ -87,15 +100,20 @@ let g:NERDTreeDirArrowCollapsible = '↓'
 let g:NERDTreeMapActivateNode = 'o'
 let g:NERDTreeMapMenu = 'a'
 let g:NERDTreeMapOpenInTab = 'p'
-let g:NERDTreeMapJumpParent = 't'
+let g:NERDTreeMapJumpParent = 'i'
+let g:NERDTreeMapOpenSplit = 't'
+
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vue'] = '𝐕'
+
+au FileType html let b:coc_root_patterns = ['.git', '.env', 'tailwind.config.js', 'tailwind.config.cjs']
+
 " augroup pencil
 "   autocmd!
 "   autocmd FileType * call pencil#init({'wrap': 'soft', 'autoformat': 1})
 " augroup END
 
 " augroup pencil autocmd! autocmd FileType * call pencil#init() augroup END
-"
-
 " --- waring --- 
 " install coc.nvim with gitclone direcly 
 "
