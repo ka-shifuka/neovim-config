@@ -5,16 +5,17 @@ call plug#begin()
   Plug 'sheerun/vim-polyglot'
   Plug 'windwp/nvim-autopairs'
   Plug 'nvim-treesitter/completion-treesitter' 
-  Plug 'reedes/vim-pencil'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'  
   Plug 'tpope/tpope-vim-abolish'
+  Plug 'ap/vim-css-color'
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'scrooloose/nerdtree'
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   Plug 'voldikss/vim-floaterm'
   Plug 'itchyny/lightline.vim'
   Plug 'ryanoasis/vim-devicons'
+  Plug 'Yggdroot/indentLine'
   " Plug 'kyazdani42/nvim-web-devicons'
   " theme "
   Plug 'sickill/vim-monokai'
@@ -29,7 +30,6 @@ let g:gruvbox_italic = 0
 let g:gruvbox_contrast_dark = 'soft'
 let g:gruvbox_transparent_bg = 1
 
-
 colorscheme gruvbox
 
 set number
@@ -38,6 +38,8 @@ set nobackup
 set noswapfile
 set autoread
 set laststatus=3
+
+set breakindent  
 
 function! SaveOrQuit()
   if &modified
@@ -51,10 +53,11 @@ endfunction
 "-- My keymap --"
 nnoremap <C-r> :Subvert/
 nnoremap <S-C> :CocCommand
-nnoremap <S-l> :CocList extensions<CR> 
+nnoremap <S-u> :CocList extensions<CR> 
 nnoremap <C-t> :FloatermToggle<CR>
 nnoremap <S-p> :CocRestart<CR><CR>
-nnoremap <S-o> :PencilToggle<CR>:echo ""<CR>
+nnoremap <S-o> :PencilSoft<CR>:echo ""<CR>
+nnoremap <S-i> :PencilOff<CR>:echo ""<CR>
 nnoremap <silent> n :NERDTreeToggle<CR>
 nnoremap <silent> f :Telescope find_files<CR>:echo ""<CR>
 nnoremap <silent> m :tabnext<CR>:echo ""<CR>
@@ -67,12 +70,11 @@ nnoremap <ESC> :call SaveOrQuit()<CR>:echo ""<CR>
 nnoremap <C-p> :CocCommand prettier.forceFormatDocument<CR>:echo ""<CR>
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
-nnoremap h k
-nnoremap j j
-nnoremap l $
-nnoremap k 0
-nnoremap <S-h> 10k
-nnoremap <S-j> 10j
+
+nnoremap <C-j> 10j
+nnoremap <C-k> 10k
+nnoremap l e
+nnoremap h b
 
 let g:coc_max_preload = 50
 let g:coc_preload_item_limit = 10
@@ -80,7 +82,8 @@ let g:coc_diagnostic_update_in_insert = 0
 let g:coc_diagnostic_scan_delay = 1000
 let g:coc_max_valid_range = 100
 
-" NERDTree
+let g:pencil#joinspaces = 1
+
 let NERDTreeShowHidden=1
 autocmd VimEnter * NERDTree | wincmd p | quit
 
@@ -92,21 +95,43 @@ filetype plugin on
 let g:floaterm_width = &columns
 let g:floaterm_height =  25 
 let g:floaterm_position = 'bottom'
-let g:move_key_modifier = 'C'
-let g:move_key_modifier_visualmode = 'C'
+let g:move_key_modifier = 'S'
+let g:move_key_modifier_visualmode = 'S'
 
 let g:NERDTreeDirArrowExpandable = '→'
 let g:NERDTreeDirArrowCollapsible = '↓'
 let g:NERDTreeMapActivateNode = 'o'
-let g:NERDTreeMapMenu = 'a'
-let g:NERDTreeMapOpenInTab = 'p'
-let g:NERDTreeMapJumpParent = 'i'
+let g:NERDTreeMapMenu = 'e'
+let g:NERDTreeMapOpenExpl = 'a'
+let g:NERDTreeMapOpenInTab = 'i'
+let g:NERDTreeMapJumpParent = 'p'
 let g:NERDTreeMapOpenSplit = 't'
+
+hi CocFloating ctermbg=Black
 
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vue'] = '𝐕'
 
+
 au FileType html let b:coc_root_patterns = ['.git', '.env', 'tailwind.config.js', 'tailwind.config.cjs']
+
+let g:indentLine_char = '▏'
+
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+endfunction
+
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction'
+      \ },
+      \ }
 
 " augroup pencil
 "   autocmd!
@@ -114,6 +139,8 @@ au FileType html let b:coc_root_patterns = ['.git', '.env', 'tailwind.config.js'
 " augroup END
 
 " augroup pencil autocmd! autocmd FileType * call pencil#init() augroup END
+
+
 " --- waring --- 
 " install coc.nvim with gitclone direcly 
 "
