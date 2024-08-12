@@ -16,12 +16,12 @@ my coc plugin list
 
 install vim-plug
 
-```bash``````````
+```bash
 mkdir .local/share/nvim/site/autoload/
 
 cd .local/share/nvim/site/autoload
 
 curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim">plug.vim
-
 ```
-chsh -s fish`````   bhshhshshshsjjsnnsnbshshsklo
+
+chsh -s fish
