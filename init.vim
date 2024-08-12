@@ -16,11 +16,13 @@ call plug#begin()
   Plug 'itchyny/lightline.vim'
   Plug 'ryanoasis/vim-devicons'
   Plug 'Yggdroot/indentLine'
+  Plug 'matze/vim-move'
+  " Plug 'junegunn/fzf'
+  " Plug 'psliwka/vim-smoothie'
   " Plug 'kyazdani42/nvim-web-devicons'
   " theme "
   Plug 'sickill/vim-monokai'
   Plug 'morhetz/gruvbox'
-  Plug 'matze/vim-move'
 
 call plug#end()
 
@@ -32,12 +34,11 @@ let g:gruvbox_transparent_bg = 1
 
 colorscheme gruvbox
 
-set number
+set relativenumber
 set nocompatible
 set nobackup
 set noswapfile
 set autoread
-set laststatus=3
 
 set breakindent  
 
@@ -53,23 +54,20 @@ endfunction
 "-- My keymap --"
 nnoremap <C-r> :Subvert/
 nnoremap <S-C> :CocCommand
-nnoremap <S-u> :CocList extensions<CR> 
 nnoremap <C-t> :FloatermToggle<CR>
-nnoremap <S-p> :CocRestart<CR><CR>
-nnoremap <S-o> :PencilSoft<CR>:echo ""<CR>
+nnoremap <C-o> :CocRestart<CR><CR>
+nnoremap <C-i> :CocList extensions<CR>:echo ""<CR>
 nnoremap <S-i> :PencilOff<CR>:echo ""<CR>
 nnoremap <silent> n :NERDTreeToggle<CR>
-nnoremap <silent> f :Telescope find_files<CR>:echo ""<CR>
+nnoremap <silent> t :Telescope find_files<CR>:echo ""<CR>
 nnoremap <silent> m :tabnext<CR>:echo ""<CR>
-nnoremap <silent> b :tabprevious<CR>:echo ""<CR>
-nnoremap <C-c> :q<CR>:echo ""<CR>
-nnoremap <silent> s :w<CR>:CocCommand prettier.forceFormatDocument<CR>:echo ""<CR>
-nnoremap <C-i> :PlugInstall<CR>:echo ""<CR>
-nnoremap <C-x> :q!<CR>:echo ""
+nnoremap <silent> b :tabprevious<CR>:echo ""<CR> 
+nnoremap <silent> s :w<CR>:echo "" <CR>
+nnoremap <C-s> :CocCommand prettier.forceFormatDocument<CR>:echo ""<CR>
+nnoremap <C-x> :q!<CR>:echo ""<CR>
 nnoremap <ESC> :call SaveOrQuit()<CR>:echo ""<CR>
 nnoremap <C-p> :CocCommand prettier.forceFormatDocument<CR>:echo ""<CR>
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
-
 
 nnoremap <C-j> 10j
 nnoremap <C-k> 10k
@@ -125,7 +123,11 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'filename', '', 'cocstatus', 'readonly' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ '' ],
+      \              [ '', 'fileencoding', 'filetype' ] ]
+      \
       \ },
       \ 'component_function': {
       \   'cocstatus': 'coc#status',
@@ -133,13 +135,18 @@ let g:lightline = {
       \ },
       \ }
 
-" augroup pencil
-"   autocmd!
-"   autocmd FileType * call pencil#init({'wrap': 'soft', 'autoformat': 1})
-" augroup END
 
-" augroup pencil autocmd! autocmd FileType * call pencil#init() augroup END
-
+" termux api cliboard need termux:api.apk
+au TextYankPost * call system('termux-clipboard-set &', @")
+function Paste(p)
+    let sysclip=system('termux-clipboard-get')
+    if sysclip != @"
+        let @"=sysclip
+    endif
+    return a:p
+endfunction
+noremap <expr> <C-p> Paste('p')
+noremap <expr> <C-p> Paste('P')
 
 " --- waring --- 
 " install coc.nvim with gitclone direcly 

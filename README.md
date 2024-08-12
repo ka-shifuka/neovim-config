@@ -14,14 +14,14 @@ my coc plugin list
 - coc-go 1.3.33\* coc-json 1.9.2
 - coc-go 1.3.33
 
-
 install vim-plug
 
-```bash
+```bash``````````
 mkdir .local/share/nvim/site/autoload/
 
 cd .local/share/nvim/site/autoload
 
 curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim">plug.vim
-```
 
+```
+chsh -s fish`````   bhshhshshshsjjsnnsnbshshsklo
