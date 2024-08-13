@@ -3,12 +3,12 @@ let g:polyglot_disabled = ['vue']
 call plug#begin()
 
   Plug 'sheerun/vim-polyglot'
-  Plug 'windwp/nvim-autopairs'
-  Plug 'nvim-treesitter/completion-treesitter' 
   Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-telescope/telescope.nvim'  
   Plug 'tpope/tpope-vim-abolish'
   Plug 'ap/vim-css-color'
+  Plug 'Aasim-A/scrollEOF.nvim'
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'scrooloose/nerdtree'
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -31,6 +31,7 @@ set termguicolors
 let g:gruvbox_italic = 0
 let g:gruvbox_contrast_dark = 'soft'
 let g:gruvbox_transparent_bg = 1
+let g:rainbow_active = 1
 
 colorscheme gruvbox
 
@@ -39,6 +40,7 @@ set nocompatible
 set nobackup
 set noswapfile
 set autoread
+set scrolloff=8
 
 set breakindent  
 
@@ -321,3 +323,6 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
+lua require('scrollEOF').setup()
