@@ -1,10 +1,10 @@
-let g:polyglot_disabled = ['vue']
+let g:polyglot_disabled = ['vue', 'markdown']
 
 call plug#begin()
 
   Plug 'sheerun/vim-polyglot'
   Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-telescope/telescope.nvim'  
   Plug 'tpope/tpope-vim-abolish'
   Plug 'ap/vim-css-color'
@@ -21,8 +21,9 @@ call plug#begin()
   " Plug 'psliwka/vim-smoothie'
   " Plug 'kyazdani42/nvim-web-devicons'
   " theme "
-  Plug 'sickill/vim-monokai'
-  Plug 'morhetz/gruvbox'
+  " Plug 'sickill/vim-monokai'
+  Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+  " Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -33,7 +34,7 @@ let g:gruvbox_contrast_dark = 'soft'
 let g:gruvbox_transparent_bg = 1
 let g:rainbow_active = 1
 
-colorscheme gruvbox
+colorscheme catppuccin_mocha 
 
 set relativenumber
 set nocompatible
@@ -82,8 +83,6 @@ let g:coc_diagnostic_update_in_insert = 0
 let g:coc_diagnostic_scan_delay = 1000
 let g:coc_max_valid_range = 100
 
-let g:pencil#joinspaces = 1
-
 let NERDTreeShowHidden=1
 autocmd VimEnter * NERDTree | wincmd p | quit
 
@@ -122,7 +121,7 @@ function! CocCurrentFunction()
 endfunction
 
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'catppuccin_mocha',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'filename', '', 'cocstatus', 'readonly' ] ],
@@ -324,5 +323,5 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
+" lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
 lua require('scrollEOF').setup()
