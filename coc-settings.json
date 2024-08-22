@@ -6,6 +6,7 @@
 		"eruby": "html",
 		"html.twig": "html",
 		"vue": "html",
+		"css": "html",
 		"javascriptreact": "html",
 		"typescriptreact": "html"
 	},

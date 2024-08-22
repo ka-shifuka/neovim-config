@@ -66,13 +66,14 @@ nnoremap <C-i> :CocList extensions<CR>:echo ""<CR>
 nnoremap <S-i> :PencilOff<CR>:echo ""<CR>
 nnoremap <silent> n :NERDTreeToggle<CR>
 nnoremap <silent> t :Telescope find_files<CR>:echo ""<CR>
-nnoremap <silent> m :tabnext<CR>:echo ""<CR>
-nnoremap <silent> b :tabprevious<CR>:echo ""<CR> 
 nnoremap <silent> s :w<CR>:echo "" <CR>
+nnoremap <silent> m :tabnext<CR>:echo ""<CR>
+nnoremap <silent> b :tabprevious<CR>:echo ""<CR>
 nnoremap <C-s> :CocCommand prettier.forceFormatDocument<CR>:echo ""<CR>
 nnoremap <C-x> :q!<CR>:echo ""<CR>
 nnoremap <ESC> :call SaveOrQuit()<CR>:echo ""<CR>
 nnoremap <C-p> :CocCommand prettier.forceFormatDocument<CR>:echo ""<CR>
+
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
 inoremap <C-d> /***/ <Left><Left><Left>
@@ -83,12 +84,6 @@ nnoremap <C-j> 10gj
 nnoremap <C-k> 10gk
 nnoremap l e
 nnoremap h b
-
-let g:coc_max_preload = 50
-let g:coc_preload_item_limit = 10
-let g:coc_diagnostic_update_in_insert = 0
-let g:coc_diagnostic_scan_delay = 1000
-let g:coc_max_valid_range = 100
 
 let NERDTreeShowHidden=1
 autocmd VimEnter * NERDTree | wincmd p | quit
