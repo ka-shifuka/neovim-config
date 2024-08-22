@@ -36,6 +36,9 @@ let g:rainbow_active = 1
 
 colorscheme catppuccin_mocha 
 
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+
 set relativenumber
 set nocompatible
 set nobackup
@@ -72,8 +75,12 @@ nnoremap <ESC> :call SaveOrQuit()<CR>:echo ""<CR>
 nnoremap <C-p> :CocCommand prettier.forceFormatDocument<CR>:echo ""<CR>
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
-nnoremap <C-j> 10j
-nnoremap <C-k> 10k
+inoremap <C-d> /***/ <Left><Left><Left>
+
+nnoremap j gj
+nnoremap k gk
+nnoremap <C-j> 10gj
+nnoremap <C-k> 10gk
 nnoremap l e
 nnoremap h b
 
