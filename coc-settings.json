@@ -1,17 +1,46 @@
 {
-	"css.validate": false,
-	"tailwindCSS.includeLanguages": {
-		"eelixir": "html",
-		"elixir": "html",
-		"eruby": "html",
-		"html.twig": "html",
-		"vue": "html",
-		"css": "html",
-		"javascriptreact": "html",
-		"typescriptreact": "html"
-	},
-	"html-css-support.enabledLanguages": [
-		"html", "vue", "javascriptreact", "typescriptreact", "angular"
-	],
-	"prettier.vueIndentScriptAndStyle": true
+  "css.validate": false,
+  "html-css-support.enabledLanguages": [
+    "html",
+    "vue",
+    "javascriptreact",
+    "typescriptreact",
+    "angular"
+  ],
+  "prettier.vueIndentScriptAndStyle": true,
+  "emmet.includeLanguages": {
+    "html": "html",
+    "vue": "html",
+    "vue-html": "html"
+  },
+  "vetur.ignoreProjectWarning": false,
+  "vetur.validation.style": false,
+  "vetur.validation.script": false,
+  "html.filetypes": [
+    "html",
+    "handlebars",
+    "htmldjango",
+    "blade",
+    "vue",
+    "javascriptreact",
+    "typescriptreact",
+    "jsx",
+    "tsx"
+  ],
+  "tailwindCSS.includeLanguages": {
+    "eelixir": "html",
+    "elixir": "html",
+    "eruby": "html",
+    "html.twig": "html",
+    "vue": "html",
+    "css": "html",
+    "vua-html": "html"
+  },
+  "languageserver": {
+    "lua": {
+      "command": "lua-language-server",
+      "trace.server": "messages",
+      "filetypes": ["lua"]
+    }
+  }
 }

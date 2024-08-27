@@ -1,10 +1,13 @@
 let g:polyglot_disabled = ['vue', 'markdown']
 
+
+
 call plug#begin()
 
   Plug 'sheerun/vim-polyglot'
   Plug 'nvim-lua/plenary.nvim'
   " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'ThePrimeagen/harpoon'
   Plug 'nvim-telescope/telescope.nvim'  
   Plug 'tpope/tpope-vim-abolish'
   Plug 'ap/vim-css-color'
@@ -15,6 +18,7 @@ call plug#begin()
   Plug 'voldikss/vim-floaterm'
   Plug 'itchyny/lightline.vim'
   Plug 'ryanoasis/vim-devicons'
+  Plug 'williamboman/mason.nvim'
   Plug 'Yggdroot/indentLine'
   Plug 'matze/vim-move'
   " Plug 'junegunn/fzf'
@@ -36,10 +40,13 @@ let g:rainbow_active = 1
 
 colorscheme catppuccin_mocha 
 
+
+
+
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
-set relativenumber
+set number
 set nocompatible
 set nobackup
 set noswapfile
@@ -74,14 +81,24 @@ nnoremap <C-x> :q!<CR>:echo ""<CR>
 nnoremap <ESC> :call SaveOrQuit()<CR>:echo ""<CR>
 nnoremap <C-p> :CocCommand prettier.forceFormatDocument<CR>:echo ""<CR>
 
+
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
-inoremap <C-d> /***/ <Left><Left><Left>
+inoremap <C-k> /***/ <Left><Left><Left>
+
+nnoremap <leader>m :lua require("harpoon.mark").add_file()<CR>
+nnoremap <leader>h :lua require("harpoon.ui").toggle_quick_menu()<CR>
+nnoremap <leader>b :lua require("harpoon.ui").select_menu_item()<CR>
+nnoremap <leader>n :lua require("harpoon.ui").nav_next()<CR>
+nnoremap <leader>p :lua require("harpoon.ui").nav_prev()<CR>
+
 
 nnoremap j gj
 nnoremap k gk
 nnoremap <C-j> 10gj
 nnoremap <C-k> 10gk
+vnoremap <C-j> 10gj
+vnoremap <C-k> 10gk 
 nnoremap l e
 nnoremap h b
 
@@ -115,6 +132,8 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vue'] = '𝐕'
 
 
 au FileType html let b:coc_root_patterns = ['.git', '.env', 'tailwind.config.js', 'tailwind.config.cjs']
+
+au FileType vue let b:coc_root_patterns = ['.git', '.env', 'package.json', 'tsconfig.json', 'jsconfig.json', 'vite.config.ts', 'vite.config.js', 'vue.config.js', 'nuxt.config.ts']
 
 let g:indentLine_char = '▏'
 
@@ -327,3 +346,4 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
 lua require('scrollEOF').setup()
+lua require("telescope").load_extension('harpoon')
