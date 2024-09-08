@@ -1,7 +1,5 @@
 let g:polyglot_disabled = ['vue', 'markdown']
 
-
-
 call plug#begin()
 
   Plug 'sheerun/vim-polyglot'
@@ -18,7 +16,6 @@ call plug#begin()
   Plug 'voldikss/vim-floaterm'
   Plug 'itchyny/lightline.vim'
   Plug 'ryanoasis/vim-devicons'
-  Plug 'williamboman/mason.nvim'
   Plug 'Yggdroot/indentLine'
   Plug 'matze/vim-move'
   " Plug 'junegunn/fzf'
@@ -27,6 +24,7 @@ call plug#begin()
   " theme "
   " Plug 'sickill/vim-monokai'
   Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+  Plug 'tribela/vim-transparent'
   " Plug 'morhetz/gruvbox'
 
 call plug#end()
@@ -40,13 +38,11 @@ let g:rainbow_active = 1
 
 colorscheme catppuccin_mocha 
 
-
-
-
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
 set number
+set relativenumber
 set nocompatible
 set nobackup
 set noswapfile
@@ -54,6 +50,7 @@ set autoread
 set scrolloff=8
 
 set breakindent  
+
 
 function! SaveOrQuit()
   if &modified
@@ -65,22 +62,18 @@ function! SaveOrQuit()
 endfunction
 
 "-- My keymap --"
-nnoremap <C-r> :Subvert/
 nnoremap <S-C> :CocCommand
-nnoremap <C-t> :FloatermToggle<CR>
 nnoremap <C-o> :CocRestart<CR><CR>
-nnoremap <C-i> :CocList extensions<CR>:echo ""<CR>
-nnoremap <S-i> :PencilOff<CR>:echo ""<CR>
-nnoremap <silent> n :NERDTreeToggle<CR>
-nnoremap <silent> t :Telescope find_files<CR>:echo ""<CR>
-nnoremap <silent> s :w<CR>:echo "" <CR>
-nnoremap <silent> m :tabnext<CR>:echo ""<CR>
-nnoremap <silent> b :tabprevious<CR>:echo ""<CR>
-nnoremap <C-s> :CocCommand prettier.forceFormatDocument<CR>:echo ""<CR>
-nnoremap <C-x> :q!<CR>:echo ""<CR>
-nnoremap <ESC> :call SaveOrQuit()<CR>:echo ""<CR>
-nnoremap <C-p> :CocCommand prettier.forceFormatDocument<CR>:echo ""<CR>
-
+nnoremap <S-i> :CocList extensions<CR>
+nnoremap <silent> t :FloatermToggle<CR>
+nnoremap <silent> s :w<CR>
+nnoremap <silent> m :tabnext<CR>
+nnoremap <silent> b :tabprevious<CR>
+nnoremap <C-s> :CocCommand prettier.forceFormatDocument<CR>
+nnoremap <C-x> :q!<CR>
+nnoremap <ESC> :call SaveOrQuit()<CR>
+nnoremap <C-p> :CocCommand prettier.forceFormatDocument<CR>
+nnoremap n :echo "hello world"<CR>
 
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
@@ -88,10 +81,12 @@ inoremap <C-k> /***/ <Left><Left><Left>
 
 nnoremap <leader>m :lua require("harpoon.mark").add_file()<CR>
 nnoremap <leader>h :lua require("harpoon.ui").toggle_quick_menu()<CR>
-nnoremap <leader>b :lua require("harpoon.ui").select_menu_item()<CR>
+nnoremap <leader>i :lua require("harpoon.ui").select_menu_item()<CR>
 nnoremap <leader>n :lua require("harpoon.ui").nav_next()<CR>
 nnoremap <leader>p :lua require("harpoon.ui").nav_prev()<CR>
-
+nnoremap <leader>o :tabnew<CR>:Telescope find_files<CR>
+nnoremap <leader>f :Telescope find_files<CR>
+nnoremap <leader>u :NERDTreeToggle<CR>
 
 nnoremap j gj
 nnoremap k gk
@@ -124,6 +119,7 @@ let g:NERDTreeMapOpenExpl = 'a'
 let g:NERDTreeMapOpenInTab = 'i'
 let g:NERDTreeMapJumpParent = 'p'
 let g:NERDTreeMapOpenSplit = 't'
+
 
 hi CocFloating ctermbg=Black
 
@@ -255,8 +251,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>z <Plug>(coc-format-selected)
+nmap <leader>z <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -334,7 +330,7 @@ nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
 " Show commands
 nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
 nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item
@@ -346,4 +342,3 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
 lua require('scrollEOF').setup()
-lua require("telescope").load_extension('harpoon')

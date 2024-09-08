@@ -1,4 +1,8 @@
 {
+  "javascript.showUnused": false,
+  "javascript.showDeprecated": false,
+  "typescript.showUnused": false,
+  "typescript.showDeprecated": false,
   "css.validate": false,
   "html-css-support.enabledLanguages": [
     "html",
@@ -7,23 +11,24 @@
     "typescriptreact",
     "angular"
   ],
-  "prettier.vueIndentScriptAndStyle": true,
   "emmet.includeLanguages": {
     "html": "html",
     "vue": "html",
     "vue-html": "html"
   },
+  "emmet.excludeLanguages": ["markdown", "js", "ts"],
+  "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
   "vetur.ignoreProjectWarning": false,
   "vetur.validation.style": false,
   "vetur.validation.script": false,
+  "vetur.format.styleInitialIndent": true,
+  "vetur.format.scriptInitialIndent": true,
   "html.filetypes": [
     "html",
     "handlebars",
     "htmldjango",
     "blade",
     "vue",
-    "javascriptreact",
-    "typescriptreact",
     "jsx",
     "tsx"
   ],
@@ -42,5 +47,8 @@
       "trace.server": "messages",
       "filetypes": ["lua"]
     }
-  }
+  },
+  "clangd.trace.server": "messages",
+  "snippets.ultisnips.pythonPrompt": false,
+  "prettier.vueIndentScriptAndStyle": true
 }
