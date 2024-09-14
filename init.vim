@@ -36,6 +36,7 @@ let g:gruvbox_contrast_dark = 'soft'
 let g:gruvbox_transparent_bg = 1
 let g:rainbow_active = 1
 
+
 colorscheme catppuccin_mocha 
 
 nnoremap <SPACE> <Nop>
@@ -86,7 +87,16 @@ nnoremap <leader>n :lua require("harpoon.ui").nav_next()<CR>
 nnoremap <leader>p :lua require("harpoon.ui").nav_prev()<CR>
 nnoremap <leader>o :tabnew<CR>:Telescope find_files<CR>
 nnoremap <leader>f :Telescope find_files<CR>
-nnoremap <leader>u :NERDTreeToggle<CR>
+nnoremap <leader>t :tabnew<CR>
+
+nnoremap x "_x
+nnoremap d "_d
+nnoremap D "_D
+vnoremap d "_d
+
+nnoremap <leader>d ""d
+nnoremap <leader>D ""D
+vnoremap <leader>d ""d
 
 nnoremap j gj
 nnoremap k gk
@@ -98,7 +108,8 @@ nnoremap l e
 nnoremap h b
 
 let NERDTreeShowHidden=1
-autocmd VimEnter * NERDTree | wincmd p | quit
+nnoremap <S-n> :NERDTree<CR> :only<CR>
+
 
 " autocmd BufWinEnter * if &buftype != 'quickfix' && getcmdwintype() == '' | silent NERDTreeMirror | endif
 
