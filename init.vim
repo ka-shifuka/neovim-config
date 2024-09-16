@@ -71,6 +71,7 @@ nnoremap <silent> s :w<CR>
 nnoremap <silent> m :tabnext<CR>
 nnoremap <silent> b :tabprevious<CR>
 nnoremap <C-s> :CocCommand prettier.forceFormatDocument<CR>
+nnoremap <S-s> :Format<CR>
 nnoremap <C-x> :q!<CR>
 nnoremap <ESC> :call SaveOrQuit()<CR>
 nnoremap <C-p> :CocCommand prettier.forceFormatDocument<CR>
