@@ -5,9 +5,9 @@
     <key width="1.43" key0="tab"/>
     <key width="1.43" key0="/"/>
     <key width="1.43" key0="alt"/>
-    <key width="1.43" key0="-"/>
-    <key width="1.43" key0="up"/>
-    <key width="1.43" key0="down"/>
+    <key width="1.43" key0="-" />
+    <key width="1.43" key0="left"/>
+    <key width="1.43" key0="right"/>
   </row>
   <row height="0.10">
     <key width="10"/>
@@ -25,7 +25,7 @@
     <key key0="p" key2="0" key3="f11_placeholder" key4="f12_placeholder"/>
   </row>
   <row>
-    <key shift="0.5" key0="a" key1="tab" key2="`"/>
+    <key shift="0.5" key0="a" key1="tab" key2="`" key4="loc ₪"/>
     <key key0="s" key1="loc accent_ring" key3="loc ß" key4="selectAll"/>
     <key key0="d" key1="loc accent_grave" key2="loc £" key3="loc accent_aigu" key4="copy"/>
     <key key0="f" key1="loc accent_dot_above" key4="paste"/>
