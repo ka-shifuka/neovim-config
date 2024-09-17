@@ -19,6 +19,7 @@ call plug#begin()
   Plug 'Yggdroot/indentLine'
   Plug 'matze/vim-move'
   Plug 'nvim-tree/nvim-web-devicons'
+  " Plug 'tpope/vim-fugitive'
   " Plug 'nvim-tree/nvim-tree.lua'
   Plug 'stevearc/oil.nvim'
   " Plug 'echasnovski/mini.icons'
@@ -92,7 +93,9 @@ nnoremap <leader>n :lua require("harpoon.ui").nav_next()<CR>
 nnoremap <leader>p :lua require("harpoon.ui").nav_prev()<CR>
 nnoremap <leader>o :tabnew<CR>:Telescope find_files<CR>
 nnoremap <leader>f :Telescope find_files<CR>
-nnoremap <leader>t :FloatermToggle<CR>
+nnoremap <leader>t :tabnew<CR>
+nnoremap <leader>w "_
+xmap <leader>w "_
 
 nnoremap x "_x
 nnoremap d "_d
@@ -430,7 +433,7 @@ require("oil").setup({
     ["<C-p>"] = "actions.preview",
     ["<C-c>"] = "actions.close",
     ["<C-l>"] = "actions.refresh",
-    ["-"] = "actions.parent",
+    ["<leader>p"] = "actions.parent",
     ["_"] = "actions.open_cwd",
     ["`"] = "actions.cd",
     ["~"] = { "actions.cd", opts = { scope = "tab" }, desc = ":tcd to the current oil directory" },
