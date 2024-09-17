@@ -1,1 +1,10 @@
 chsh -s fish
+
+sumenko lua tips as default lsp bin in .config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/ -> extension/server/bin/lua-language-server is have eror
+
+so for solve it you need instal lua-language-server
+```bash
+apt install lua-language-server
+```
+
+in /bin/ copy lua-language-server bin into .config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/ -> extension/server/bin/lua-language-server now is work
