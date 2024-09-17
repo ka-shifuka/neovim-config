@@ -1,27 +1,41 @@
-### install in ~/.config/nvim
+## Welcome to my neovim config
 
-my coc plugin list
+Fhis repository is just config for my neovim for better
+experience with my workflow.
 
-- coc-tailwindcss 0.7.0
-- coc-snippets 3.1.10
-- coc-prettier 9.3.2
-- coc-pairs 1.4.2
-- coc-html-css-support 0.5.3
-- coc-html 1.8.0
-- coc-emmet 1.1.6
-- coc-tsserver 2.2.0
-- coc-json 1.9.2
-- coc-go 1.3.33\* coc-json 1.9.2
-- coc-go 1.3.33
+For now is use init.vim because i copy from google and i dont know
+lua in that time so just use whatever i see. Form now i maybe switch to lua config
+file but than not this time maybe in future
 
-install vim-plug
+
+### how to install
+
+this config file in inside ~/.config/nvim/ directory. this below is how to install it
 
 ```bash
-mkdir .local/share/nvim/site/autoload/
+cd ~/.config
+mkdir nvim
 
-cd .local/share/nvim/site/autoload
+git clone https://github.com/ka-shifuka/neovim-config > nvim
+```
+
+in this case im use vim-plug for plugin manager and this bellow is how to install it
+
+```bash
+mkdir ~/.local/share/nvim/site/autoload/
+
+cd ~/.local/share/nvim/site/autoload
 
 curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim">plug.vim
 ```
 
-chsh -s fish
+in this scenario i dont install coc-nvim from vim-plug so i installit via git and
+this bellow is how to install it or see [install cocnvim](https://github.com/neoclide/coc.nvim/wiki/Install-coc.nvim)
+
+```bash
+mkdir -p ~/.local/share/nvim/site/pack/coc/start
+cd ~/.local/share/nvim/site/pack/coc/start
+git clone --branch release https://github.com/neoclide/coc.nvim.git --depth=
+```
+
+

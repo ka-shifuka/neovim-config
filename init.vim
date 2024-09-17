@@ -4,10 +4,6 @@ call plug#begin()
 
   Plug 'sheerun/vim-polyglot'
   Plug 'nvim-lua/plenary.nvim'
-  " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  " Plug 'ap/vim-css-color'
-  " Plug 'scrooloose/nerdtree'
-  " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   Plug 'ThePrimeagen/harpoon'
   Plug 'nvim-telescope/telescope.nvim'  
   Plug 'tpope/tpope-vim-abolish'
@@ -15,21 +11,25 @@ call plug#begin()
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'voldikss/vim-floaterm'
   Plug 'itchyny/lightline.vim'
-  " Plug 'ryanoasis/vim-devicons'
   Plug 'Yggdroot/indentLine'
   Plug 'matze/vim-move'
   Plug 'nvim-tree/nvim-web-devicons'
+  Plug 'stevearc/oil.nvim'
+  Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+  Plug 'tribela/vim-transparent'
   " Plug 'tpope/vim-fugitive'
   " Plug 'nvim-tree/nvim-tree.lua'
-  Plug 'stevearc/oil.nvim'
+  " Plug 'ryanoasis/vim-devicons'
+  " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  " Plug 'ap/vim-css-color'
+  " Plug 'scrooloose/nerdtree'
+  " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   " Plug 'echasnovski/mini.icons'
   " Plug 'junegunn/fzf'
   " Plug 'psliwka/vim-smoothie'
   " Plug 'kyazdani42/nvim-web-devicons'
   " theme "
   " Plug 'sickill/vim-monokai'
-  Plug 'catppuccin/vim', { 'as': 'catppuccin' }
-  Plug 'tribela/vim-transparent'
   " Plug 'morhetz/gruvbox'
 
 call plug#end()
@@ -133,21 +133,7 @@ let g:floaterm_position = 'bottom'
 let g:move_key_modifier = 'S'
 let g:move_key_modifier_visualmode = 'S'
 
-let g:NERDTreeDirArrowExpandable = '→'
-let g:NERDTreeDirArrowCollapsible = '↓'
-let g:NERDTreeMapActivateNode = 'o'
-let g:NERDTreeMapMenu = 'e'
-let g:NERDTreeMapOpenExpl = 'a'
-let g:NERDTreeMapOpenInTab = 'i'
-let g:NERDTreeMapJumpParent = 'p'
-let g:NERDTreeMapOpenSplit = 't'
-
-
 hi CocFloating ctermbg=Black
-
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vue'] = '𝐕'
-
 
 au FileType html let b:coc_root_patterns = ['.git', '.env', 'tailwind.config.js', 'tailwind.config.cjs']
 
