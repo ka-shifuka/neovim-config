@@ -13,5 +13,5 @@ opt.scrolloff = 8
 opt.breakindent = true
 
 -- color
-opt.termguicolors = false
+opt.termguicolors = true
 
