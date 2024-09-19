@@ -41,13 +41,6 @@
     "css": "html",
     "vua-html": "html"
   },
-  "languageserver": {
-    "lua": {
-      "command": "lua-language-server",
-      "trace.server": "messages",
-      "filetypes": ["lua"]
-    }
-  },
   "clangd.trace.server": "messages",
   "snippets.ultisnips.pythonPrompt": false,
   "prettier.vueIndentScriptAndStyle": true,

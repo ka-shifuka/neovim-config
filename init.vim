@@ -35,25 +35,10 @@ call plug#begin()
 call plug#end()
 
 set termguicolors
-
-let g:gruvbox_italic = 0
-let g:gruvbox_contrast_dark = 'soft'
-let g:gruvbox_transparent_bg = 1
-let g:rainbow_active = 1
-
-
 colorscheme catppuccin_mocha 
 
 nnoremap <SPACE> <Nop>
 let mapleader=" "
-
-set number
-set relativenumber
-set nocompatible
-set nobackup
-set noswapfile
-set autoread
-set scrolloff=8
 
 set breakindent  
 
@@ -94,17 +79,9 @@ nnoremap <leader>p :lua require("harpoon.ui").nav_prev()<CR>
 nnoremap <leader>o :tabnew<CR>:Telescope find_files<CR>
 nnoremap <leader>f :Telescope find_files<CR>
 nnoremap <leader>t :tabnew<CR>
-nnoremap <leader>w "_
-xmap <leader>w "_
 
-nnoremap x "_x
-nnoremap d "_d
-nnoremap D "_D
-vnoremap d "_d
-
-nnoremap <leader>d ""d
-nnoremap <leader>D ""D
-vnoremap <leader>d ""d
+nnoremap <leader>s "_
+xmap <leader>s "_
 
 nnoremap j gj
 nnoremap k gk
@@ -351,6 +328,8 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
 lua require('scrollEOF').setup()
 lua << EOF
+require("ka-shifuka")
+
 require("oil").setup({
   -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
   -- Set to false if you want some other plugin (e.g. netrw) to open when you edit directories.
