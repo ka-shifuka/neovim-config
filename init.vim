@@ -34,13 +34,10 @@ call plug#begin()
 
 call plug#end()
 
-set termguicolors
 colorscheme catppuccin_mocha 
 
 nnoremap <SPACE> <Nop>
 let mapleader=" "
-
-set breakindent  
 
 
 function! SaveOrQuit()
@@ -53,20 +50,6 @@ function! SaveOrQuit()
 endfunction
 
 "-- My keymap --"
-nnoremap <S-C> :CocCommand
-nnoremap <C-o> :CocRestart<CR><CR>
-nnoremap <S-i> :CocList extensions<CR>
-nnoremap <silent> t :FloatermToggle<CR>
-nnoremap <silent> s :w<CR>
-nnoremap <silent> m :tabnext<CR>
-nnoremap <silent> b :tabprevious<CR>
-nnoremap <C-s> :CocCommand prettier.forceFormatDocument<CR>
-nnoremap <S-s> :Format<CR>
-nnoremap <C-x> :q!<CR>
-nnoremap <ESC> :call SaveOrQuit()<CR>
-nnoremap <C-p> :CocCommand prettier.forceFormatDocument<CR>
-nnoremap n :echo "hello world"<CR>
-
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
 inoremap <C-k> /***/ <Left><Left><Left>
@@ -80,8 +63,10 @@ nnoremap <leader>o :tabnew<CR>:Telescope find_files<CR>
 nnoremap <leader>f :Telescope find_files<CR>
 nnoremap <leader>t :tabnew<CR>
 
-nnoremap <leader>s "_
-xmap <leader>s "_
+nnoremap <leader>d "_d
+xmap <leader>d "_d
+
+nnoremap x "_x
 
 nnoremap j gj
 nnoremap k gk

@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<keyboard name="QWERTY" script="latin">
+<keyboard name="custom" script="latin">
   <row height="0.7">
     <key width="1.43" key0="esc"/>
     <key width="1.43" key0="tab"/>
     <key width="1.43" key0="/"/>
     <key width="1.43" key0="alt"/>
     <key width="1.43" key0="-" />
-    <key width="1.43" key0="left"/>
-    <key width="1.43" key0="right"/>
-  </row>
-  <row height="0.10">
-    <key width="10"/>
+    <key width="1.43" key0="left" key4="down" key2="up"/>
+    <key width="1.43" key0="right" key1="up" key3="down"/>
   </row>
   <row>
     <key key0="q" key2="1" key4="esc"/>
