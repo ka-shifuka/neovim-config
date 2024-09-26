@@ -1,5 +1,6 @@
 {
   "Lua.workspace.library": [
-    "/data/data/com.termux/files/home/.local/share/nvim/plugged/harpoon/lua"
+    "/data/data/com.termux/files/home/.local/share/nvim/plugged/harpoon/lua",
+    "/data/data/com.termux/files/home/.local/share/nvim/plugged/plenary.nvim/lua"
   ]
 }

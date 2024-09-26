@@ -54,15 +54,6 @@ command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
 inoremap <C-k> /***/ <Left><Left><Left>
 
-nnoremap <leader>m :lua require("harpoon.mark").add_file()<CR>
-nnoremap <leader>h :lua require("harpoon.ui").toggle_quick_menu()<CR>
-nnoremap <leader>i :lua require("harpoon.ui").select_menu_item()<CR>
-nnoremap <leader>n :lua require("harpoon.ui").nav_next()<CR>
-nnoremap <leader>p :lua require("harpoon.ui").nav_prev()<CR>
-nnoremap <leader>o :tabnew<CR>:Telescope find_files<CR>
-nnoremap <leader>f :Telescope find_files<CR>
-nnoremap <leader>t :tabnew<CR>
-
 nnoremap <leader>d "_d
 xmap <leader>d "_d
 
@@ -311,9 +302,9 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
-lua require('scrollEOF').setup()
 lua << EOF
-require("ka-shifuka")
+require('ka-shifuka')
+require('scrollEOF').setup()
 
 require("oil").setup({
   -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
