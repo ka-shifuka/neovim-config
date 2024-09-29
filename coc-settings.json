@@ -1,4 +1,6 @@
 {
+  "coc.preferences.formatOnSave": false,
+  "npm.binPath": "pnpm",
   "javascript.showUnused": false,
   "javascript.showDeprecated": false,
   "typescript.showUnused": false,
