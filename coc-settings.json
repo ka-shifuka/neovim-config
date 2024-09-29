@@ -4,6 +4,7 @@
   "javascript.showUnused": false,
   "javascript.showDeprecated": false,
   "typescript.showUnused": false,
+  "inlayHint.enable": false,
   "typescript.showDeprecated": false,
   "css.validate": false,
   "html-css-support.enabledLanguages": [
